@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>スプレッドシート編集</title>
+</head>
+<body>
+  <h1>Googleスプレッドシート編集</h1>
+  <label>スプレッドシートURL: <input type="text" id="spreadsheetUrl" placeholder="https://docs.google.com/spreadsheets/d/..."></label><br>
+  <button onclick="fetchSheetNames()">シート名取得</button><br>
+  <label>シート名: <select id="sheetName"></select></label><br>
+  <button onclick="fetchData()">データ取得</button>
+
+  <h2>取得データ</h2>
+  <div id="headers"></div>
+
+  <h2>データ入力</h2>
+  <label>B列の値: <select id="keyValue"></select></label><br>
+  <div id="inputFields"></div>
+  <button onclick="submitData()">送信</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
