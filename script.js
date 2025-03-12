@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1pOAPlQFcCwG6paZylu88JU0leDVaqRgfk5VtTgrOKTnBVEWJ9hgFRHcSDkK4seLTlA/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
 let headers = [];
 
 function fetchSheetNames() {
