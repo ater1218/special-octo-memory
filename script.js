@@ -1,7 +1,11 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1pOAPlQFcCwG6paZylu88JU0leDVaqRgfk5VtTgrOKTnBVEWJ9hgFRHcSDkK4seLTlA/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
-let headers = [];
+
+function showLoading(show) {
+  document.getElementById("loading").style.display = show ? "block" : "none";
+}
 
 function fetchSheetNames() {
+  showLoading(true);
   const url = document.getElementById("spreadsheetUrl").value;
   const spreadsheetId = url.match(/\/d\/(.+?)\//)[1];
 
@@ -17,10 +21,12 @@ function fetchSheetNames() {
         select.appendChild(option);
       });
     })
-    .catch(error => console.error("シート名取得エラー:", error));
+    .catch(error => console.error("シート名取得エラー:", error))
+    .finally(() => showLoading(false));
 }
 
 function fetchData() {
+  showLoading(true);
   const url = document.getElementById("spreadsheetUrl").value;
   const sheetName = document.getElementById("sheetName").value;
   const spreadsheetId = url.match(/\/d\/(.+?)\//)[1];
@@ -56,10 +62,12 @@ function fetchData() {
         document.getElementById("inputFields").innerHTML = inputs;
       }
     })
-    .catch(error => console.error("データ取得エラー:", error));
+    .catch(error => console.error("データ取得エラー:", error))
+    .finally(() => showLoading(false));
 }
 
 function submitData() {
+  showLoading(true);
   const url = document.getElementById("spreadsheetUrl").value;
   const sheetName = document.getElementById("sheetName").value;
   const spreadsheetId = url.match(/\/d\/(.+?)\//)[1];
@@ -82,5 +90,6 @@ function submitData() {
   })
   .then(response => response.text())
   .then(result => alert(result))
-  .catch(error => console.error("送信エラー:", error));
+  .catch(error => console.error("送信エラー:", error))
+  .finally(() => showLoading(false));
 }
