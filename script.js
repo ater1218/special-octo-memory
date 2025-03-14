@@ -1,4 +1,5 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1pOAPlQFcCwG6paZylu88JU0leDVaqRgfk5VtTgrOKTnBVEWJ9hgFRHcSDkK4seLTlA/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
+const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
+let headers = [];
 
 function showLoading(show) {
   document.getElementById("loading").style.display = show ? "block" : "none";
@@ -13,7 +14,7 @@ function fetchSheetNames() {
     .then(response => response.json())
     .then(result => {
       const select = document.getElementById("sheetName");
-      select.innerHTML = "";
+      select.innerHTML = '<option value="">-- シートを選択 --</option>';
       result.sheetNames.forEach(name => {
         const option = document.createElement("option");
         option.value = name;
@@ -26,9 +27,11 @@ function fetchSheetNames() {
 }
 
 function fetchData() {
-  showLoading(true);
   const url = document.getElementById("spreadsheetUrl").value;
   const sheetName = document.getElementById("sheetName").value;
+  if (!sheetName) return;
+
+  showLoading(true);
   const spreadsheetId = url.match(/\/d\/(.+?)\//)[1];
 
   fetch(`${SCRIPT_URL}?spreadsheetId=${spreadsheetId}&sheetName=${sheetName}`)
