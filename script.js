@@ -1,4 +1,4 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx1pOAPlQFcCwG6paZylu88JU0leDVaqRgfk5VtTgrOKTnBVEWJ9hgFRHcSDkK4seLTlA/exec"; // Google Apps ScriptのウェブアプリURLに置き換え
 let headers = [];
 
 function showLoading(show) {
@@ -92,7 +92,7 @@ function submitData() {
     })
   })
   .then(response => response.text())
-  .then(result => alert(result))
+  .then(result => console.log(result)) // alertを削除し、コンソールに出力
   .catch(error => console.error("送信エラー:", error))
   .finally(() => showLoading(false));
 }
