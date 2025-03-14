@@ -91,8 +91,7 @@
     <button onclick="fetchSheetNames()">シート名取得</button>
   </div>
   <div class="form-group">
-    <label>シート名: <select id="sheetName"></select></label>
-    <button onclick="fetchData()">データ取得</button>
+    <label>シート名: <select id="sheetName" onchange="fetchData()"></select></label>
   </div>
 
   <div id="loading">処理中...</div>
@@ -101,7 +100,7 @@
 
   <h2>データ入力</h2>
   <div class="form-group">
-    <label>初期位置: <select id="keyValue"></select></label>
+    <label>B列の値: <select id="keyValue"></select></label>
   </div>
   <div id="inputFields"></div>
   <button onclick="submitData()">送信</button>
